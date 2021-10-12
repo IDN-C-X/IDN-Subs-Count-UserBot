@@ -36,16 +36,16 @@ pip3 install -r requirements.txt
 - `CHANNELS` - List of channel/group usernames, seperated by space.
 - `STRING_SESSION` - Pyrogram string session. run genstring.py
 - `MSG_ID` - Message ID of COUNTS_EDIT_CHANNEL.
-- `COUNTS_EDIT_CHANNEL` - Username of channel/group to edit the subscriber count
-- `SLEEP_TIME` - Sleep time for bot before re-check the subs count, default to 10 seconds.
+- `COUNTS_EDIT_CHANNEL` - Username of channel/group to edit the subscriber count.
 
 ### Deploy 
 ```sh 
 python3 bot.py
 ```
 
-## Credit
+## Credits
 - [Dan](https://github.com/delivrance) for [PyroGram](https://pyrogram.org)
+- [Amit Yadav](https://github.com/amit-y11) for [TG Live Subs API](https://tglivesubsapi.vercel.app/)
 
 ## Copyright & License
 - Copyright (©) 2021 by [IDN-C-X](https://github.com/IDN-C-X)

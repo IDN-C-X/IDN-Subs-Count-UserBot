@@ -25,10 +25,6 @@
     },
     "COUNTS_EDIT_CHANNEL": {
       "description": "Username of channel/group to edit the subscriber count."
-    },
-    "SLEEP_TIME": {
-      "description": "Sleep time for bot before re-check the subs count, default to 10 seconds.",
-      "value": "10"
     }
   },
    "addons": [
