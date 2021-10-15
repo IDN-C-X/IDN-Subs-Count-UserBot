@@ -17,7 +17,13 @@ xbot = Client(api_id=APP_ID, api_hash=API_HASH, session_name=STRING_SESSION)
 # Helper
 def getdicks(channel):
   url = f'https://tglivesubsapi.vercel.app/getsubs/{channel}'
-  x = json.loads(requests.get(url).text)
+  try:
+    x = json.loads(requests.get(url).text)
+  except Exception:
+    return '0', f'Channel Not Found ({channel})'
+  if 'members' in x['subs']:
+    subs = x['subs'].split('members', 1)[0]
+    return subs, x['channel_name']
   return x['subs'], x['channel_name']
 
 # Main script
