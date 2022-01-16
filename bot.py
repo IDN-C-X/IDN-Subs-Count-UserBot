@@ -7,7 +7,7 @@ APP_ID = int(os.environ['APP_ID'])
 CHANNELS = os.environ['CHANNELS']
 STRING_SESSION = os.environ['STRING_SESSION']
 
-CHANNELS = [i for i in CHANNELS.split(' ')]
+CHANNELS = list(CHANNELS.split(' '))
 MSG_ID = int(os.environ['MSG_ID'])
 COUNTS_EDIT_CHANNEL = os.environ['COUNTS_EDIT_CHANNEL']
 
@@ -39,17 +39,14 @@ async def runbot():
         CH_USERNAME = channel
         toprint += f'<a href=https://t.me/{CH_USERNAME}>{CH_TITLE}</a>: `{CH_MCOUNT}`\n'
       me = await xbot.get_me()
-      toprint += f'\nBy <a href=tg://user?id={str(me.id)}>{me.first_name}</a>'
+      toprint += f'\nBy <a href=tg://user?id={me.id}>{me.first_name}</a>'
       f = await xbot.get_messages(COUNTS_EDIT_CHANNEL, MSG_ID)
-      if f.text.html == toprint:
-        print('Checked')
-      else:
+      if f.text.html != toprint:
         try:
           await xbot.edit_message_text(COUNTS_EDIT_CHANNEL, MSG_ID, toprint, disable_web_page_preview=True)
         except FloodWait as e:
-          print(f'FloodWait: Sleeping for {str(e.x)} seconds')
+          print(f'FloodWait: Sleeping for {e.x} seconds')
           await asyncio.sleep(e.x)
-          pass
-        print('Checked')
+      print('Checked')
 
 xbot.run(runbot())
